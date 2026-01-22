@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#000000">
 
   <title>Rocket Goal Unblocked - StaticQuasar931</title>
   <meta name="description" content="Play Rocket Goal Unblocked on StaticQuasar931. Fullscreen Unity WebGL game that works at school, work, or anywhere.">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="theme-color" content="#000000">
+
   <link rel="canonical" href="https://staticquasar931.github.io/Rocket-Goal/">
 
   <meta property="og:title" content="Rocket Goal Unblocked - StaticQuasar931">
-  <meta property="og:description" content="Rocket Goal Unblocked on StaticQuasar931. Fullscreen Unity WebGL game that works at school, work, or anywhere.">
+  <meta property="og:description" content="Play Rocket Goal Unblocked on StaticQuasar931. Fullscreen Unity WebGL game that works at school, work, or anywhere.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://staticquasar931.github.io/Rocket-Goal/">
   <meta property="og:image" content="https://staticquasar931.github.io/Rocket-Goal/og-image.png">
@@ -20,28 +22,14 @@
 
   <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/StaticQuasar931/Images@main/icon.png">
   <link rel="shortcut icon" href="TemplateData/favicon.ico">
+  <link rel="apple-touch-icon" href="TemplateData/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="TemplateData/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="TemplateData/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="TemplateData/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="TemplateData/favicon-64x64.png">
-  <link rel="icon" type="image/png" sizes="128x128" href="TemplateData/favicon-128x128.png">
-  <link rel="apple-touch-icon" href="TemplateData/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="TemplateData/android-chrome-192x192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="TemplateData/android-chrome-512x512.png">
 
   <link rel="stylesheet" href="TemplateData/style.css">
   <link rel="manifest" href="manifest.webmanifest">
-
-  <script>
-    if (window.location.href.includes("dev")) {
-      const s = document.createElement("script");
-      s.src = "firebase/firebase_dev.js";
-      document.head.appendChild(s);
-    }
-  </script>
-
-  <script src="firebase/firebase.js"></script>
-  <script src="utils.js"></script>
 
   <style>
     :root{
@@ -117,6 +105,67 @@
       #staticSlideMenu{ width:88px; height:88px }
     }
   </style>
+
+  <!-- Firebase compat SDK (LOCAL). Must load BEFORE firebase/firebase.js -->
+  <script src="firebase/firebase-app-compat.js"></script>
+  <script src="firebase/firebase-analytics-compat.js"></script>
+  <script src="firebase/firebase-auth-compat.js"></script>
+  <script src="firebase/firebase-firestore-compat.js"></script>
+  <script src="firebase/firebase-remote-config-compat.js"></script>
+
+  <script>
+    // Leave warning
+    window.onbeforeunload = () => "Are you sure you want to leave? Your session may be interrupted.";
+
+    // Helpful runtime checks (does not block anything)
+    (function(){
+      function logState(){
+        const ok = (typeof window.firebase !== "undefined");
+        console.log("[RocketGoal] firebase global present:", ok);
+        if (ok && window.firebase.apps) console.log("[RocketGoal] firebase.apps.length:", window.firebase.apps.length);
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", logState);
+      } else {
+        logState();
+      }
+    })();
+
+    // Optional dev loader (if you actually have firebase/firebase_dev.js)
+    (function(){
+      if (window.location.href.includes("dev")) {
+        const s = document.createElement("script");
+        s.src = "firebase/firebase_dev.js";
+        s.onload = () => console.log("[RocketGoal] firebase_dev.js loaded");
+        s.onerror = () => console.warn("[RocketGoal] firebase_dev.js missing or failed to load");
+        document.head.appendChild(s);
+      }
+    })();
+
+    // No-op stubs so the build never waits on external ad SDKs
+    (function(){
+      if (!window.PlaygamaAds) {
+        window.PlaygamaAds = {
+          init: () => Promise.resolve(true),
+          showInterstitial: () => Promise.resolve(true),
+          showRewarded: () => Promise.resolve(false),
+          isReady: () => true
+        };
+      }
+      if (!window.GoogleAds) {
+        window.GoogleAds = {
+          init: () => Promise.resolve(true),
+          showInterstitial: () => Promise.resolve(true),
+          showRewarded: () => Promise.resolve(false),
+          isReady: () => true
+        };
+      }
+    })();
+  </script>
+
+  <!-- Your game glue code -->
+  <script src="firebase/firebase.js"></script>
+  <script src="utils.js"></script>
 </head>
 
 <body>
@@ -131,11 +180,13 @@
     <div id="unity-warning"></div>
   </div>
 
+  <!-- Static Menu -->
   <div id="staticMenu" role="region" aria-label="StaticQuasar menu">
     <a href="https://sites.google.com/view/staticquasar931/gm3z" target="_blank" rel="noopener">More Unblocked Games by Static</a>
     <span id="closeStaticMenu" title="Hide temporarily">✕</span>
   </div>
 
+  <!-- Rotator -->
   <div id="staticSlideMenu" aria-live="polite">
     <a id="staticSlideLink" href="https://sites.google.com/view/staticquasar931/google-form" target="_blank" rel="noopener" aria-label="Open Google Form">
       <img id="staticSlideImg" src="https://cdn.jsdelivr.net/gh/StaticQuasar931/Images@main/GoogleForm.png" alt="StaticQuasar931 Google Form for feedback and requests">
@@ -143,8 +194,7 @@
   </div>
 
   <script>
-    window.onbeforeunload = () => "Are you sure you want to leave? Your session may be interrupted.";
-
+    // Static Menu show/hide with 3 minute return
     (function(){
       const menu = document.getElementById("staticMenu");
       const btn  = document.getElementById("closeStaticMenu");
@@ -167,6 +217,7 @@
       if (btn) btn.onclick = hideFor3m;
     })();
 
+    // Rotator: Google Form → Discord → Instagram
     (function(){
       const wrap = document.getElementById("staticSlideMenu");
       const a    = document.getElementById("staticSlideLink");
@@ -220,6 +271,7 @@
       })();
     })();
 
+    // Keyboard secret toggle: y + u + i
     (function(){
       const idsToToggle = ["staticMenu", "staticSlideMenu"];
       let seq = [];
@@ -239,6 +291,7 @@
       });
     })();
 
+    // Keep canvas fit updated
     (function(){
       const canvas = document.getElementById("unity-canvas");
       function fit(){
@@ -250,65 +303,6 @@
       window.addEventListener("orientationchange", fit);
       fit();
       setInterval(fit, 1500);
-    })();
-
-    (function(){
-      const compatFiles = [
-        "firebase/firebase-app-compat.js",
-        "firebase/firebase-analytics-compat.js",
-        "firebase/firebase-auth-compat.js",
-        "firebase/firebase-firestore-compat.js",
-        "firebase/firebase-remote-config-compat.js"
-      ];
-
-      function headHas(src){
-        return Array.from(document.getElementsByTagName("script")).some(s => (s.src || "").includes(src));
-      }
-
-      async function fileExists(url){
-        try{
-          const r = await fetch(url, { method:"HEAD", cache:"no-store" });
-          return r.ok;
-        }catch(e){
-          return false;
-        }
-      }
-
-      async function injectFirebaseCompatIfPresent(){
-        for (const f of compatFiles){
-          if (headHas(f)) continue;
-          const ok = await fileExists(f);
-          if (!ok) continue;
-          await new Promise((resolve) => {
-            const s = document.createElement("script");
-            s.src = f;
-            s.onload = resolve;
-            s.onerror = resolve;
-            document.head.appendChild(s);
-          });
-        }
-      }
-
-      injectFirebaseCompatIfPresent();
-    })();
-
-    (function(){
-      if (!window.PlaygamaAds) {
-        window.PlaygamaAds = {
-          init: () => Promise.resolve(true),
-          showInterstitial: () => Promise.resolve(true),
-          showRewarded: () => Promise.resolve(false),
-          isReady: () => true
-        };
-      }
-      if (!window.GoogleAds) {
-        window.GoogleAds = {
-          init: () => Promise.resolve(true),
-          showInterstitial: () => Promise.resolve(true),
-          showRewarded: () => Promise.resolve(false),
-          isReady: () => true
-        };
-      }
     })();
   </script>
 
@@ -352,6 +346,7 @@
 
     var script = document.createElement("script");
     script.src = loaderUrl;
+
     script.onload = function () {
       createUnityInstance(canvas, config, function (progress) {
         progressBarFull.style.width = (100 * progress) + "%";
@@ -360,16 +355,25 @@
         window.unityInstance = unityInstance;
         window.unityGame = unityInstance;
 
-        if (typeof initializeFirebase === "function") {
-          try { initializeFirebase(unityInstance); } catch (e) {}
+        // Important: these must exist on window for Unity to call them
+        if (typeof window.initializeFirebase === "function") {
+          try { window.initializeFirebase(unityInstance); } catch (e) { console.warn("[RocketGoal] initializeFirebase threw:", e); }
+        } else {
+          console.warn("[RocketGoal] initializeFirebase is not defined. Check firebase/firebase.js loaded and defines it on window.");
         }
-        if (typeof initializeUtils === "function") {
-          try { initializeUtils(unityInstance); } catch (e) {}
+
+        if (typeof window.initializeUtils === "function") {
+          try { window.initializeUtils(unityInstance); } catch (e) { console.warn("[RocketGoal] initializeUtils threw:", e); }
         }
       }).catch(function (message) {
         alert(message);
       });
     };
+
+    script.onerror = function () {
+      alert("Loader failed to load: " + loaderUrl);
+    };
+
     document.body.appendChild(script);
   </script>
 
@@ -377,10 +381,11 @@
     <h1>Rocket Goal unblocked game</h1>
     <p>
       Rocket Goal unblocked on StaticQuasar931 works at school, work, or anywhere. Rocket Goal game unblocked, Rocket Goal g@me unblocked,
-      Rocket Goal working at school, Rocket Goal school, Rocket Goal unbl0cked. static, staticquasar, staticquasar931, static 931, staticq,
-      staticq931, 931.
+      Rocket Goal working at school, Rocket Goal school, Rocket Goal unbl0cked, unblocked games, school safe game, working at school.
+      static, staticquasar, staticquasar931, static 931, staticq, staticq931, 931.
     </p>
     <p>
+      https://sites.google.com/view/staticquasar931
       https://sites.google.com/view/staticquasar931/gm3z
       https://sites.google.com/view/staticquasar931/google-form
       https://discord.gg/DP2hM7RRhR
