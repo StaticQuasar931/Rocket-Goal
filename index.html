@@ -5,25 +5,29 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
 
+  <title>Rocket Goal Unblocked - StaticQuasar931</title>
+  <meta name="description" content="Play Rocket Goal Unblocked on StaticQuasar931. Fullscreen Unity WebGL game that works at school, work, or anywhere.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#000000">
 
-  <link rel="shortcut icon" href="TemplateData/favicon.ico">
+  <link rel="canonical" href="https://staticquasar931.github.io/Rocket-Goal/">
+
+  <meta property="og:title" content="Rocket Goal Unblocked - StaticQuasar931">
+  <meta property="og:description" content="Rocket Goal Unblocked on StaticQuasar931. Fullscreen Unity WebGL game that works at school, work, or anywhere.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://staticquasar931.github.io/Rocket-Goal/">
+  <meta property="og:image" content="https://staticquasar931.github.io/Rocket-Goal/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="shortcut icon" href="TemplateData/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="TemplateData/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="TemplateData/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="TemplateData/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="TemplateData/favicon-64x64.png">
-  <link rel="icon" type="image/png" sizes="128x128" href="TemplateData/favicon-128x128.png">
+  <link rel="apple-touch-icon" href="TemplateData/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="TemplateData/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="TemplateData/android-chrome-512x512.png">
 
   <link rel="stylesheet" href="TemplateData/style.css">
   <link rel="manifest" href="manifest.webmanifest">
-
-  <!-- Local Firebase compat SDKs -->
-  <script src="firebase/firebase-app-compat.js"></script>
-  <script src="firebase/firebase-analytics-compat.js"></script>
-  <script src="firebase/firebase-auth-compat.js"></script>
-  <script src="firebase/firebase-remote-config-compat.js"></script>
-  <script src="firebase/firebase-firestore-compat.js"></script>
 
   <script>
     if (window.location.href.includes("dev")) {
@@ -136,8 +140,10 @@
   </div>
 
   <script>
+    // Leave warning
     window.onbeforeunload = () => "Are you sure you want to leave? Your session may be interrupted.";
 
+    // Static Menu show/hide with 3 minute return
     (function(){
       const menu = document.getElementById("staticMenu");
       const btn  = document.getElementById("closeStaticMenu");
@@ -160,6 +166,7 @@
       if (btn) btn.onclick = hideFor3m;
     })();
 
+    // Rotator: Google Form → Discord → Instagram
     (function(){
       const wrap = document.getElementById("staticSlideMenu");
       const a    = document.getElementById("staticSlideLink");
@@ -213,6 +220,7 @@
       })();
     })();
 
+    // Keyboard secret toggle: y + u + i to toggle all Visual SEO
     (function(){
       const idsToToggle = ["staticMenu", "staticSlideMenu"];
       let seq = [];
@@ -232,6 +240,7 @@
       });
     })();
 
+    // Keep canvas fit updated
     (function(){
       const canvas = document.getElementById("unity-canvas");
       function fit(){
@@ -243,6 +252,26 @@
       window.addEventListener("orientationchange", fit);
       fit();
       setInterval(fit, 1500);
+    })();
+
+    // No-op stubs so the build never waits on ad SDKs
+    (function(){
+      if (!window.PlaygamaAds) {
+        window.PlaygamaAds = {
+          init: () => Promise.resolve(true),
+          showInterstitial: () => Promise.resolve(true),
+          showRewarded: () => Promise.resolve(false),
+          isReady: () => true
+        };
+      }
+      if (!window.GoogleAds) {
+        window.GoogleAds = {
+          init: () => Promise.resolve(true),
+          showInterstitial: () => Promise.resolve(true),
+          showRewarded: () => Promise.resolve(false),
+          isReady: () => true
+        };
+      }
     })();
   </script>
 
@@ -276,6 +305,8 @@
       frameworkUrl: "98438f2e7a94945eb0c97aa68a131683.framework.js.unityweb",
       codeUrl: "def2138bbbbbb3dc09c6c604c4109263.wasm.unityweb",
       streamingAssetsUrl: "StreamingAssets",
+      companyName: "StaticQuasar931",
+      productName: "Rocket Goal",
       productVersion: "0.302",
       showBanner: unityShowBanner
     };
@@ -284,10 +315,10 @@
 
     var script = document.createElement("script");
     script.src = loaderUrl;
-    script.onload = () => {
-      createUnityInstance(canvas, config, (progress) => {
+    script.onload = function () {
+      createUnityInstance(canvas, config, function (progress) {
         progressBarFull.style.width = (100 * progress) + "%";
-      }).then((unityInstance) => {
+      }).then(function (unityInstance) {
         loadingBar.style.display = "none";
         window.unityInstance = unityInstance;
         window.unityGame = unityInstance;
@@ -298,7 +329,7 @@
         if (typeof initializeUtils === "function") {
           try { initializeUtils(unityInstance); } catch (e) {}
         }
-      }).catch((message) => {
+      }).catch(function (message) {
         alert(message);
       });
     };
@@ -306,18 +337,17 @@
   </script>
 
   <div class="seo-hidden" aria-hidden="true">
-    <h1>Rocket Goal unblocked game - StaticQuasar931</h1>
+    <h1>Rocket Goal unblocked game</h1>
     <p>
-      Rocket Goal unblocked is a fullscreen Unity WebGL browser game on StaticQuasar931 that works at school, work, or anywhere.
-      If Rocket Goal unblocked loads slowly, wait a moment. If it fails, refresh and try again. Explore more unblocked games and g@mes:
-      https://sites.google.com/view/staticquasar931/gm3z and the homepage https://sites.google.com/view/staticquasar931.
+      Rocket Goal unblocked on StaticQuasar931 works at school, work, or anywhere. Rocket Goal game unblocked, Rocket Goal g@me unblocked,
+      Rocket Goal working at school, Rocket Goal school, Rocket Goal unbl0cked. static, staticquasar, staticquasar931, static 931, staticq,
+      staticq931, 931.
     </p>
     <p>
-      Keywords: rocket goal unblocked, rocket goal game unblocked, rocket goal g@me unblocked, rocket goal working at school, rocket goal school,
-      rocket goal game at school, rocket goal g@me at school, rocket goal unbl0cked, staticquasar931, staticquasar, static 931, staticq, staticq931, 931.
-    </p>
-    <p>
-      Requests: https://sites.google.com/view/staticquasar931/google-form | Discord: https://discord.gg/DP2hM7RRhR | Instagram: https://www.instagram.com/freeschoolgamepage/
+      https://sites.google.com/view/staticquasar931/gm3z
+      https://sites.google.com/view/staticquasar931/google-form
+      https://discord.gg/DP2hM7RRhR
+      https://www.instagram.com/freeschoolgamepage/
     </p>
   </div>
 </body>
