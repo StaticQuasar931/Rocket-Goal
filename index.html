@@ -9,7 +9,6 @@
   <meta name="description" content="Play Rocket Goal Unblocked on StaticQuasar931. Fullscreen Unity WebGL game that works at school, work, or anywhere.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#000000">
-
   <link rel="canonical" href="https://staticquasar931.github.io/Rocket-Goal/">
 
   <meta property="og:title" content="Rocket Goal Unblocked - StaticQuasar931">
@@ -19,9 +18,13 @@
   <meta property="og:image" content="https://staticquasar931.github.io/Rocket-Goal/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="shortcut icon" href="TemplateData/favicon.png">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/StaticQuasar931/Images@main/icon.png">
+  <link rel="shortcut icon" href="TemplateData/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="TemplateData/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="TemplateData/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="TemplateData/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="TemplateData/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="TemplateData/favicon-128x128.png">
   <link rel="apple-touch-icon" href="TemplateData/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="TemplateData/android-chrome-192x192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="TemplateData/android-chrome-512x512.png">
@@ -140,10 +143,8 @@
   </div>
 
   <script>
-    // Leave warning
     window.onbeforeunload = () => "Are you sure you want to leave? Your session may be interrupted.";
 
-    // Static Menu show/hide with 3 minute return
     (function(){
       const menu = document.getElementById("staticMenu");
       const btn  = document.getElementById("closeStaticMenu");
@@ -166,7 +167,6 @@
       if (btn) btn.onclick = hideFor3m;
     })();
 
-    // Rotator: Google Form → Discord → Instagram
     (function(){
       const wrap = document.getElementById("staticSlideMenu");
       const a    = document.getElementById("staticSlideLink");
@@ -220,7 +220,6 @@
       })();
     })();
 
-    // Keyboard secret toggle: y + u + i to toggle all Visual SEO
     (function(){
       const idsToToggle = ["staticMenu", "staticSlideMenu"];
       let seq = [];
@@ -240,7 +239,6 @@
       });
     })();
 
-    // Keep canvas fit updated
     (function(){
       const canvas = document.getElementById("unity-canvas");
       function fit(){
@@ -254,7 +252,46 @@
       setInterval(fit, 1500);
     })();
 
-    // No-op stubs so the build never waits on ad SDKs
+    (function(){
+      const compatFiles = [
+        "firebase/firebase-app-compat.js",
+        "firebase/firebase-analytics-compat.js",
+        "firebase/firebase-auth-compat.js",
+        "firebase/firebase-firestore-compat.js",
+        "firebase/firebase-remote-config-compat.js"
+      ];
+
+      function headHas(src){
+        return Array.from(document.getElementsByTagName("script")).some(s => (s.src || "").includes(src));
+      }
+
+      async function fileExists(url){
+        try{
+          const r = await fetch(url, { method:"HEAD", cache:"no-store" });
+          return r.ok;
+        }catch(e){
+          return false;
+        }
+      }
+
+      async function injectFirebaseCompatIfPresent(){
+        for (const f of compatFiles){
+          if (headHas(f)) continue;
+          const ok = await fileExists(f);
+          if (!ok) continue;
+          await new Promise((resolve) => {
+            const s = document.createElement("script");
+            s.src = f;
+            s.onload = resolve;
+            s.onerror = resolve;
+            document.head.appendChild(s);
+          });
+        }
+      }
+
+      injectFirebaseCompatIfPresent();
+    })();
+
     (function(){
       if (!window.PlaygamaAds) {
         window.PlaygamaAds = {
